@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import amin.learn.mvvm.project_1.EmployeeRepository;
+import amin.learn.mvvm.project_1.api.EmployeeRepository;
 import amin.learn.mvvm.project_1.model.Employee;
 
 public class MainViewModel extends AndroidViewModel {

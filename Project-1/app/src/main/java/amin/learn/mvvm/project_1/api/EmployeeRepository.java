@@ -1,4 +1,4 @@
-package amin.learn.mvvm.project_1;
+package amin.learn.mvvm.project_1.api;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -7,8 +7,6 @@ import java.util.List;
 
 import amin.learn.mvvm.project_1.model.Employee;
 import amin.learn.mvvm.project_1.model.EmployeeDBResponse;
-import amin.learn.mvvm.project_1.remote.EmployeeDataService;
-import amin.learn.mvvm.project_1.remote.RetrofitClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

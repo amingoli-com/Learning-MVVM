@@ -1,4 +1,4 @@
-package amin.learn.mvvm.project_1.remote;
+package amin.learn.mvvm.project_1.api;
 
 import amin.learn.mvvm.project_1.model.EmployeeDBResponse;
 import retrofit2.Call;
