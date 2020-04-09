@@ -4,6 +4,6 @@ import amin.learn.mvvm.project_1.model.EmployeeDBResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 public interface EmployeeDataService {
-    @GET("list.json")
+    @GET("amingoli78/Learning-MVVM/master/Project-1/list.json")
     Call<EmployeeDBResponse> getEmployees();
 }

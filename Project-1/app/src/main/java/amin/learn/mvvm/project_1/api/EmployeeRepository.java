@@ -1,5 +1,7 @@
 package amin.learn.mvvm.project_1.api;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ public class EmployeeRepository {
         call.enqueue(new Callback<EmployeeDBResponse>() {
             @Override
             public void onResponse(Call<EmployeeDBResponse> call, Response<EmployeeDBResponse> response) {
+                Log.d(TAG, "onResponse: "+response);
                 EmployeeDBResponse employeeDBResponse = response.body();
                 if (employeeDBResponse != null && employeeDBResponse.getEmployee() != null) {
                     employees = (ArrayList<Employee>) employeeDBResponse.getEmployee();
