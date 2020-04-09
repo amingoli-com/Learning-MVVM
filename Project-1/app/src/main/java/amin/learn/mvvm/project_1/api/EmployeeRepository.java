@@ -24,7 +24,7 @@ public class EmployeeRepository {
         call.enqueue(new Callback<EmployeeDBResponse>() {
             @Override
             public void onResponse(Call<EmployeeDBResponse> call, Response<EmployeeDBResponse> response) {
-                Log.d(TAG, "onResponse: "+response);
+                Log.d(TAG, "onResponse: "+response.body().toString());
                 EmployeeDBResponse employeeDBResponse = response.body();
                 if (employeeDBResponse != null && employeeDBResponse.getEmployee() != null) {
                     employees = (ArrayList<Employee>) employeeDBResponse.getEmployee();
