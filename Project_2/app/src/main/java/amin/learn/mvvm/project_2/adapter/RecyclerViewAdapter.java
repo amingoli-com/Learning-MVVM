@@ -1,4 +1,4 @@
-package amin.learn.mvvm.project_2;
+package amin.learn.mvvm.project_2.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import amin.learn.mvvm.project_2.R;
+import amin.learn.mvvm.project_2.model.User;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

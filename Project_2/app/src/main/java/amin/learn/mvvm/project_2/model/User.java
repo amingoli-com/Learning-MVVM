@@ -1,10 +1,15 @@
-package amin.learn.mvvm.project_2;
+package amin.learn.mvvm.project_2.model;
 
 public class User {
     private String title;
     private String description;
     private String imgIcon;
 
+    public User(String title, String description, String imgIcon) {
+        this.title = title;
+        this.description = description;
+        this.imgIcon = imgIcon;
+    }
 
     public String getTitle() {
         return title;
