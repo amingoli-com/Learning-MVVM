@@ -1,4 +1,4 @@
-package amin.learn.mvvm.project_2.view;
+package amin.learn.mvvm.project_2.ui.itemTest;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -15,9 +15,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 import amin.learn.mvvm.project_2.R;
-import amin.learn.mvvm.project_2.adapter.RecyclerViewAdapter;
-import amin.learn.mvvm.project_2.model.User;
-import amin.learn.mvvm.project_2.viewModel.MainViewModel;
+import amin.learn.mvvm.project_2.model.UserModel;
 
 public class MainActivity extends AppCompatActivity implements LifecycleOwner {
 
@@ -34,38 +32,24 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
         context = this;
         recyclerView = findViewById(R.id.rv_main);
         viewModel = ViewModelProviders.of(context).get(MainViewModel.class);
-        viewModel.getUserMutableLiveData().observe(context, userListUpdateObserver);
-
-
-
-
-        String json = "{ 'name':'John', 'email':'john.doe@gmail.com', 'age':29, 'phone':5168161922, 'city':'NewYork', 'hasCreditCard':false }";
-
-        Gson gson = new Gson();
-        UserDetails user = gson.fromJson(json, UserDetails.class);
-
-        Log.d("amingoli", "onCreate: "+user.city);
-
+        viewModel.getUserMutableLiveData().observe(context, new Observer<ArrayList<UserModel>>() {
+            @Override
+            public void onChanged(ArrayList<UserModel> userModels) {
+                recyclerViewAdapter = new RecyclerViewAdapter(context,userModels);
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                recyclerView.setAdapter(recyclerViewAdapter);
+            }
+        });
     }
 
-    Observer<ArrayList<User>> userListUpdateObserver = new Observer<ArrayList<User>>() {
+    Observer<ArrayList<UserModel>> userListUpdateObserver = new Observer<ArrayList<UserModel>>() {
         @Override
-        public void onChanged(ArrayList<User> userArrayList) {
+        public void onChanged(ArrayList<UserModel> userArrayList) {
             recyclerViewAdapter = new RecyclerViewAdapter(context,userArrayList);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             recyclerView.setAdapter(recyclerViewAdapter);
         }
     };
-
-
-    class UserDetails {
-        private String name;
-        private String email;
-        private int age;
-        private long phone;
-        private String city;
-        private boolean hasCreditCard;
-    }
 
 
 }

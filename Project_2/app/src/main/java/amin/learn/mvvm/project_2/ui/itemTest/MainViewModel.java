@@ -1,4 +1,6 @@
-package amin.learn.mvvm.project_2.viewModel;
+package amin.learn.mvvm.project_2.ui.itemTest;
+
+import android.os.Handler;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -10,13 +12,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import amin.learn.mvvm.project_2.model.User;
 import amin.learn.mvvm.project_2.api.ApiInterface;
 import amin.learn.mvvm.project_2.api.ApiUtil;
+import amin.learn.mvvm.project_2.model.UserModel;
 
 public class MainViewModel extends ViewModel {
-    private MutableLiveData<ArrayList<User>> userLiveData;
-    private ArrayList<User> userArrayList;
+    private MutableLiveData<ArrayList<UserModel>> userLiveData;
+    private ArrayList<UserModel> userArrayList;
 
     public MainViewModel() {
         userLiveData = new MutableLiveData<>();
@@ -24,7 +26,7 @@ public class MainViewModel extends ViewModel {
         init();
     }
 
-    public MutableLiveData<ArrayList<User>> getUserMutableLiveData() {
+    public MutableLiveData<ArrayList<UserModel>> getUserMutableLiveData() {
         return userLiveData;
     }
 
@@ -54,9 +56,29 @@ public class MainViewModel extends ViewModel {
             String first_name = objectArray.getString("first_name");
             String last_name = objectArray.getString("last_name");
             String avatar = objectArray.getString("avatar");
-            userArrayList.add(new User(first_name,last_name,avatar));
+            userArrayList.add(new UserModel(first_name,last_name,avatar));
         }
         userLiveData.setValue(userArrayList);
+
+        android.os.Handler mSeekbarUpdateHandler = new Handler();
+        mSeekbarUpdateHandler.postDelayed(() -> {
+            try {
+                JSONObject jsonObject2 = new JSONObject(RESPONE);
+                JSONArray jsonArray2 = jsonObject2.getJSONArray("data");
+
+                for (int i = 0; i < jsonArray2.length(); i++) {
+                    JSONObject objectArray2 = jsonArray2.getJSONObject(i);
+                    String first_name = objectArray2.getString("first_name");
+                    String last_name = objectArray2.getString("last_name");
+                    String avatar = objectArray2.getString("avatar");
+                    userArrayList.add(new UserModel(first_name+"-2",last_name+"-2",avatar+"-2"));
+                }
+                userLiveData.setValue(userArrayList);
+            }catch (Exception e){
+
+            }
+    },5000);
+
     }
 
 }

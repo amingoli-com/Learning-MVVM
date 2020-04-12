@@ -1,4 +1,4 @@
-package amin.learn.mvvm.project_2.adapter;
+package amin.learn.mvvm.project_2.ui.itemTest;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import amin.learn.mvvm.project_2.R;
-import amin.learn.mvvm.project_2.model.User;
+import amin.learn.mvvm.project_2.model.UserModel;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Activity context;
-    ArrayList<User> userArrayList;
+    ArrayList<UserModel> userArrayList;
 
-    public RecyclerViewAdapter(Activity context, ArrayList<User> userArrayList) {
+    public RecyclerViewAdapter(Activity context, ArrayList<UserModel> userArrayList) {
         this.context = context;
         this.userArrayList = userArrayList;
     }
@@ -36,9 +36,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        User user = userArrayList.get(position);
+        UserModel user = userArrayList.get(position);
         RecyclerViewViewHolder viewHolder= (RecyclerViewViewHolder) holder;
-
         viewHolder.txtView_title.setText(user.getTitle());
         viewHolder.txtView_description.setText(user.getDescription());
     }
