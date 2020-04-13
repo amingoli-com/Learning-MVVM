@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner {
         setContentView(R.layout.activity_main);
         context = this;
         recyclerView = findViewById(R.id.rv_main);
-        viewModel = ViewModelProviders.of(context).get(MainViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         viewModel.getUserMutableLiveData().observe(context, new Observer<ArrayList<UserModel>>() {
             @Override
             public void onChanged(ArrayList<UserModel> userModels) {

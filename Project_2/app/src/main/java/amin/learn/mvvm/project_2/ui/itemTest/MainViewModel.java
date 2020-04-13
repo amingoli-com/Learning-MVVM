@@ -1,7 +1,9 @@
 package amin.learn.mvvm.project_2.ui.itemTest;
 
+import android.app.Application;
 import android.os.Handler;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -12,15 +14,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import amin.learn.mvvm.project_2.BaseViewModel;
 import amin.learn.mvvm.project_2.api.ApiInterface;
 import amin.learn.mvvm.project_2.api.ApiUtil;
 import amin.learn.mvvm.project_2.model.UserModel;
 
-public class MainViewModel extends ViewModel {
+public class MainViewModel extends BaseViewModel {
     private MutableLiveData<ArrayList<UserModel>> userLiveData;
     private ArrayList<UserModel> userArrayList;
 
-    public MainViewModel() {
+    public MainViewModel(@NonNull Application application) {
+        super(application);
         userLiveData = new MutableLiveData<>();
         userArrayList = new ArrayList<>();
         init();
